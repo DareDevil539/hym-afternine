@@ -1,6 +1,20 @@
-.center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome {
+    margin-top: 200px;
+}
+
+.offers {
+    background-color: #efefef;
+    margin-top: 250px;
+    padding: 30px 75px;
+    border-radius: 5px;
+    &__item {
+
+    }
 }
