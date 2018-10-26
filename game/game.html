@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>UzNU - Game</title>
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<div id="container" class="container" v-bind:style="{backgroundImage:'url('+ image +')'}">
+		<div class="rules" v-if="isRules" >
+			<h1 class="rules__tittle">Правила</h1>
+			<ol class="rules__list">
+				<li>loremloremloremloremloremlorem</li>
+				<li>loremloremloremloremloremlorem</li>
+				<li>loremloremloremloremloremlorem</li>
+				<li>loremloremloremloremloremlorem</li>
+				<li>loremloremloremloremloremlorem</li>
+			</ol>
+			<button class="rules__btn" v-on:click="isRules = !isRules">Продовжити</button>
+		</div>
+		<div class="game"></div>
+	</div>
+	<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
