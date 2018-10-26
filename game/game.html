@@ -18,9 +18,31 @@
 				<li>loremloremloremloremloremlorem</li>
 				<li>loremloremloremloremloremlorem</li>
 			</ol>
-			<button class="rules__btn" v-on:click="isRules = !isRules">Продовжити</button>
+			<button class="rules__btn" v-on:click="changeScene">Продовжити</button>
 		</div>
-		<div class="game"></div>
+		<div class="game" v-if="!isRules">
+			<div class="game__roomName game-block">Test</div>
+			<div class="game__question game-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Dui
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</div>
+			<div class="game__characters game-block">
+				<img src="img/avatars/avatar.png"  v-for="(value,key) in characters" v-on:mouseover="showCharc(key)" v-on:mouseout="clearDesc">
+				<div class="characters__desc" v-if="isHovered"><ul>
+					<li v-for="item in selectedChars">
+						{{item}}
+					</li>
+				</ul></div>
+			</div>
+			<ul class="game__answers">
+				<li class="answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed doem ipsum dolor sit amet, consectetur adipisicing elit, sed do </li>
+				<li class="answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </li>
+				<li class="answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </li>
+			</ul>
+		</div>
 	</div>
 	<script type="text/javascript" src="js/script.js"></script>
 </body>
