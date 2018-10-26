@@ -43,3 +43,68 @@ body{
 .game{
 	color: #fff;
 }
+.game-block{
+	position: fixed;
+	background: rgba(0,0,0,0.7);
+	border-radius: 5px;
+}
+.game__roomName{
+
+	top: 0;
+	left: 50%;
+
+	width: 300px;
+	text-align: center;
+	text-transform: uppercase;
+	padding: 5px 5px;
+
+	transform: translate(-50%);
+}
+.game__question{
+
+	width: 70%;
+	top:100px;
+	left: 15px;
+	padding: 10px 10px;
+}
+.game__characters{
+	right: 0;
+	top: 50%;
+	padding: 10px 10px;
+	transform: translate(0,-50%);
+	display: flex;
+	flex-direction: column;
+}
+.game__characters img {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	margin-bottom: 10px;
+}
+.characters__desc{
+	position: absolute;
+	right: 100px;
+	background: rgba(0,0,0,0.7);
+	padding: 10px 10px;
+}
+.characters__desc ul {
+	margin:0;
+}
+.game__answers{
+	position: fixed;
+	border-radius: 5px;
+	bottom:20px;
+	width: 50%;
+}
+.game__answers li {
+	margin-bottom: 10px;
+}
+.answer{
+	background: rgba(0,0,0,0.7);
+	border-radius: 5px;
+	padding: 10px 10px;
+	cursor: pointer;
+}
+.answer:hover{
+	background: rgba(0,0,0,1);
+}
