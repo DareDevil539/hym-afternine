@@ -7,7 +7,13 @@ class Answer(models.Model):
 
     text = models.TextField()
 
-    next_question = models.ForeignKey('Question', on_delete=models.CASCADE, related_name='question_in_a', null=True)
+    #character = models.OneToOneField('Character', default='0000000', on_delete=models.CASCADE, null=True)
+
+    next_question = models.ForeignKey('Question',
+                                      on_delete=models.CASCADE,
+                                      related_name='question_in_a',
+                                      null=True,
+                                      blank=True)
 
     def __str__(self):
         return self.text
@@ -17,11 +23,19 @@ class Question(models.Model):
 
     background = models.CharField(max_length=100, null=True)
 
+    u_id = models.IntegerField(default='000', null=True)
+    #character = models.OneToOneField('Character', default='0000000', on_delete=models.CASCADE, null=True)
+
     text = models.TextField()
 
-    answers = models.ManyToManyField('Answer', related_name='answer_in_q', null=True)
+    answers = models.ManyToManyField('Answer',
+                                     related_name='answer_in_q',
+                                     blank=True)
 
     def __str__(self):
         return self.text
+
+
+
 
 
