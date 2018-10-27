@@ -34,6 +34,7 @@ new Vue({
 		questionID: 22,
 		nextQuestions: {},
 		checkedID: [],
+		scores: 0,
 	},
 	methods:{
 		getQuestion: function () {
@@ -51,7 +52,7 @@ new Vue({
 					if (this.checkedID.indexOf("" + tmpKey.id) == -1 && tmpKey.u_id == 0) {
 						this.answers[tmpKey.id] = tmpKey.text;
 					} else if (this.checkedID.indexOf("" + tmpKey.id) == -1 && tmpKey.u_id != 0) {
-						if (this.checkedID.indexOf(tmpKey.u_id) != -1) {
+						if (this.selectedPersons.indexOf(this.persons[tmpKey.u_id]) != -1) {
 							this.answers[tmpKey.id] = tmpKey.text;
 						}
 					}
