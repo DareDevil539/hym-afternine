@@ -25,7 +25,7 @@ SECRET_KEY = '5lpmfz6(x-qeec7tle#ro%-l3a9gcbbn71lrv9-8-r*%ci2zo%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'game',
     'rest_framework',
+    'rest_framework_json_api',
     'corsheaders',
 ]
 
