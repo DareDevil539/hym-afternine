@@ -4,3 +4,4 @@ from game.api.viewsets import QuestionViewSet
 router = routers.DefaultRouter()
 
 router.register('question', QuestionViewSet)
+router.register('', QuestionViewSet)
