@@ -21,8 +21,9 @@ class QuestionViewSet(viewsets.ModelViewSet):
 
         queryset = Question.objects.get(pk=pk).answers.all()
         print(queryset)
-        question_text = Question.objects.get(pk=pk).text
-        return Response({'question': question_text, 'answers': queryset.values()})
+        question_text = Question.objects.get(pk=pk)
+        serializer = QuestionSerializer(question_text)
+        return Response({'question': serializer.data, 'answers': queryset.values()})
 
     def get_permissions(self):
         if self.request.method == 'POST':
