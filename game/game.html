@@ -9,7 +9,7 @@
 <body>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<div id="container" class="container" v-bind:style="{backgroundImage:'url('+ image +')'}">
-		<div class="rules animated fadeInUp" v-if="isRules" >
+		<div class="rules" v-if="isRules" >
 			<h1 class="rules__tittle">Правила</h1>
 			<ol class="rules__list">
 				<li>loremloremloremloremloremlorem</li>
@@ -20,7 +20,7 @@
 			</ol>
 			<button class="btn" v-on:click="changeScene">Продовжити</button>
 		</div>
-		<div class="game animated fadeInUp" v-if="!isRules && !isChosingCharacter">
+		<div class="game" v-if="!isRules && !isChosingCharacter">
 			<div class="game__roomName game-block">Test</div>
 			<div class="game__question game-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -30,7 +30,7 @@
 			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</div>
 			<div class="game__characters game-block">
-				<img src="img/avatars/avatar.png"  v-for="(value,key) in characters" v-on:mouseover="showCharc(key)" v-on:mouseout="clearDesc">
+				<img :src="'img/avatars/avatar-' + key + '.png'"  v-for="(value,key) in characters" v-on:mouseover="showCharc(key)" v-on:mouseout="clearDesc">
 				<div class="characters__desc" v-if="isHovered"><ul>
 					<li v-for="item in selectedChars">
 						{{item}}
@@ -38,9 +38,7 @@
 				</ul></div>
 			</div>
 			<ul class="game__answers">
-				<li class="answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed doem ipsum dolor sit amet, consectetur adipisicing elit, sed do </li>
-				<li class="answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </li>
-				<li class="answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </li>
+				<li class="answer" v-for="answ_item in answers">{{ answ_item }}</li>
 			</ul>
 		</div>
 <div class="chosing-character game-block" v-if="!isRules && isChosingCharacter">
@@ -48,8 +46,9 @@
 				<div class="ch-header">
 					<h1>Вибір персонажів</h1>
 				</div>
+				<span class="error" v-if="isError">Виберіть допустиму кількість персонажів!</span>
 				<div class="ch-item" v-for="(value, key) in persons"><input type="checkbox" :value="key" v-model="selectedPersons">{{ value }}</div>
-				<button href="#" class="btn ch-btn" @click="selectPersons">{{ selectedPersons.length }}</button>
+				<button href="#" class="btn ch-btn" @click="selectPersons">Підтвердити!</button>
 			</div>
 		</div>
 	</div>
