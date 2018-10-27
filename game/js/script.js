@@ -42,9 +42,12 @@ new Vue({
 			params: {
 
 			}
-			this.$http.get('https://afternine.herokuapp.com/api/question/' + this.questionID + '/').then(function (response) {
-				let tempObj = response.data.data.answers;
+			this.$http.get('http://138.68.89.19:8080/api/question/' + this.questionID + '/').then(function (response) {
+			console.log(response);	
+			let tempObj = response.data.data.answers;
 				this.response = tempObj;
+				console.log(response.body.data.question.background);
+				// this.image = "img/" + response.body.data.question.background;
 				this.questText = response.data.data.question.text;
 				for (const key in tempObj) {
 					let tmpKey = tempObj[key];
@@ -92,11 +95,11 @@ new Vue({
 
 		nextQuest: function (qstId) {
 			console.log(qstId);
-			this.$http.get("https://afternine.herokuapp.com/api/answer/"+ qstId+"/").then(function (response) {
-				console.log(response);
-			}, function (error) {
+			// this.$http.get("https://afternine.herokuapp.com/api/answer/"+ qstId +"/").then(function (response) {
+			// 	console.log(response);
+			// }, function (error) {
 				
-			})
+			// })
 			if (this.checkedID.indexOf(qstId) == -1 || qstId == 22) {
 				this.checkedID[qstId] = qstId;
 				console.log(this.checkedID);
