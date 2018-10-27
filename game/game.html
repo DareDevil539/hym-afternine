@@ -7,21 +7,52 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<div id="container" class="container" v-bind:style="{backgroundImage:'url('+ image +')'}">
 		<div class="rules" v-if="isRules" >
 			<h1 class="rules__tittle">Правила</h1>
+<div class="rules__story">Це була звичайна нічим не примітна сесія, як завжди знайшлися студенти які завалили майже всі
+	предмети. І в цей раз вони вирішили розібратися з проблемою дуже незвичним способом. Компанія друзів домовилася
+	залишитися в універі до настання ночі та повиправляти собі оцінки. Отже ваша ціль знайти всі журнали та виправити в
+	них потрібні бали. Ваша ціль: набрати якомога більшу кількість балів за ніч для того щоб закрити сесію.</div>
 			<ol class="rules__list">
-				<li>loremloremloremloremloremlorem</li>
-				<li>loremloremloremloremloremlorem</li>
-				<li>loremloremloremloremloremlorem</li>
-				<li>loremloremloremloremloremlorem</li>
-				<li>loremloremloremloremloremlorem</li>
+				<li>Для почтаку вам потрібно буде вибрати 3х студентів. Від вашого вибору залежить ставлення зустрітих вами людей в
+	різних аудиторіях.</li>
+				<li>Після вибору студентів перед вами постане вибір аудиторії. В кожній з них вас будуть чекати різні несподіванки з
+	якими вам потрібно буде впоратися щоб добратися до журналу з оцінками.</li>
+<li> Якщо ви будете занадто грубими з зустрітими вами людьми то вони можуть не дозволити вам зробити задумане вами./li>
+<li>Ваша ціль знайти всі журнали та замінити як можна на кращі.</li>
+				
 			</ol>
-			<button class="rules__btn" v-on:click="isRules = !isRules">Продовжити</button>
+			<button class="btn" v-on:click="changeScene">Продовжити</button>
 		</div>
-		<div class="game"></div>
+		<div class="game" v-if="!isRules && !isChosingCharacter">
+			<div class="game__roomName game-block">Test</div>
+			<div class="game__question game-block">{{questText}}</div>
+			<div class="game__characters game-block">
+				<img :src="'img/avatars/avatar-' + value + '.png'" v-for="(value,key) in selectedPersons" v-on:mouseover="showCharc(key)" v-on:mouseout="clearDesc">
+				<div class="characters__desc" v-if="isHovered"><ul>
+					<li v-for="item in selectedChars">
+						{{item}}
+					</li>
+				</ul></div>
+			</div>
+			<ul class="game__answers">
+				<li class="answer" v-for="answ_item in answers">{{ answ_item }}</li>
+			</ul>
+		</div>
+<div class="chosing-character game-block" v-if="!isRules && isChosingCharacter">
+			<div class="ch-wrapper">
+				<div class="ch-header">
+					<h1>Вибір персонажів</h1>
+				</div>
+				<span class="error" v-if="isError">Виберіть допустиму кількість персонажів!</span>
+				<div class="ch-item" v-for="(value, key) in persons"><input type="checkbox" :value="key" v-model="selectedPersons">{{ value }}</div>
+				<button href="#" class="btn ch-btn" @click="selectPersons">Підтвердити!</button>
+			</div>
+		</div>
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
 	<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

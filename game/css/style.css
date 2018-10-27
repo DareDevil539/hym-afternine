@@ -12,34 +12,186 @@ body{
 
 	-webkit-background-size: cover;
 	background-size: cover;
+	animation-name: fade;
+	animation-duration: 1.5s
 }
 .rules{
 	width: 50%;	
 	margin: 0 auto;
 	margin-top: 150px;
-	text-align: center;
+	display: flex;
+	flex-direction:column;
+	justify-content: center;
+	align-items:center;
 	color: #fff;
 	background: rgba(0,0,0,0.7);
 	border-radius: 5px;
 	padding: 15px 5px;
+	animation-name: fade;
+	animation-duration: 1s;
 }
 .rules__tittle{
 	text-transform: uppercase;
 }
 .rules__list{
-	text-align: left;
+	align-self: flex-start;
 }
 .rules__list li {
 	margin-bottom: 20px;
 }
-.rules__btn{
+.btn{
 	padding: 7px;
 	border-radius: 5px;
 	background: #2B2065;
 	color: #8F95C7;
 	border: none;
 	cursor: pointer;
+	
 }
 .game{
 	color: #fff;
+}
+.game-block{
+	position: fixed;
+	background: rgba(0,0,0,0.7);
+	border-radius: 5px;
+}
+.game__roomName{
+
+	top: 0;
+	left: 50%;
+
+	width: 300px;
+	text-align: center;
+	text-transform: uppercase;
+	padding: 5px 5px;
+
+	transform: translate(-50%);
+}
+.game__question{
+	width: 70%;
+	top:100px;
+	left: 15px;
+	padding: 10px 10px;
+	animation-name: fade-in-left;
+	animation-duration: 1s;
+}
+.game__characters{
+	right: 0;
+	top: 50%;
+	padding: 10px 10px;
+	transform: translate(0,-50%);
+	display: flex;
+	flex-direction: column;
+}
+.game__characters img {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	margin-bottom: 10px;
+}
+.characters__desc{
+	position: absolute;
+	right: 100px;
+	background: rgba(0,0,0,0.7);
+	padding: 10px 10px;
+	animation-name: fade-out;
+	animation-duration: .4s;
+}
+.characters__desc ul {
+	margin:0;
+}
+.game__answers{
+	position: fixed;
+	border-radius: 5px;
+	bottom:20px;
+	width: 50%;
+	animation-name: fade-in-left;
+	animation-duration: 2s;
+}
+.game__answers li {
+	margin-bottom: 10px;
+}
+.answer{
+	background: rgba(0,0,0,0.7);
+	border-radius: 5px;
+	padding: 10px 10px;
+	cursor: pointer;
+}
+.answer:hover{
+	background: rgba(0,0,0,1);
+}
+
+.chosing-character {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	justify-items: center;
+	align-items: center;
+	left: 50%;
+	top: 100px;
+	transform: translate(-50%);
+
+	animation-name: fade;
+	animation-duration: 1s;
+	
+}
+
+.ch-wrapper {
+	/* background-color: rgba(0, 0, 0, .8); */
+	width: 100%;
+	padding: 30px 190px;
+	border-radius: 5px;
+	color: #ffffff;
+	font-weight: bold;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+ .ch-header {
+	margin: 20px 0;
+}
+
+ .ch-item {
+	margin:10px auto;
+	width: 120px;
+	
+}
+.ch-btn{
+	margin-top: 30px;
+}
+
+span.error {
+	color: #ff0000;
+	margin-bottom: 20px;
+}
+
+@keyframes fade {
+	from{
+		opacity: 0;
+	} to{
+		opacity: 1;
+	}
+}
+@keyframes fade-out {
+	from{
+		right: 0px;
+		opacity: 0;
+	}
+	to{
+		right: 100px;
+		opacity: 1;
+	}
+}
+
+@keyframes fade-in-left {
+	from {
+		left: -100%;
+		opacity: 0;
+	} to {
+		left: 15px;
+		opacity: 1;
+	}
 }
