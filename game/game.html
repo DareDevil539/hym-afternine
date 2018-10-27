@@ -34,10 +34,11 @@
 					<li v-for="item in selectedChars">
 						{{item}}
 					</li>
+					
 				</ul></div>
 			</div>
 			<ul class="game__answers">
-				<li class="answer" v-for="answ_item in answers">{{ answ_item }}</li>
+				<li class="answer" v-for="(answ_item,key) in answers" v-on:click="nextQuest(key)">{{ answ_item }}</li>
 			</ul>
 		</div>
 <div class="chosing-character game-block" v-if="!isRules && isChosingCharacter">
