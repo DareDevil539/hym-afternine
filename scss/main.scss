@@ -26,10 +26,10 @@ body{
 }
 
 .offers {
-    background-color: rgba(0,0,0,.8);
+    width: 50%;
+    background-color: rgba(0, 0, 0, .8);
     margin-top: 200px;
     margin-bottom: 100px;
-    padding: 30px 190px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -65,6 +65,6 @@ body{
 }
 
 .screens {
-    width: 800px;
+    width: 80%;
     margin: 20px 0;
 }
