@@ -4,10 +4,13 @@ from game.models import *
 
 class QuestionSerializer(serializers.ModelSerializer):
 
-    def create(self, validated_data):
-        q = Question.objects.create(**validated_data)
-        return q
-
     class Meta:
         model = Question
         fields = ('id', 'text', 'background', 'answers')
+
+
+class AnswerSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Answer
+        fields = ('id', 'text', 'next_question')
