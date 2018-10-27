@@ -32,13 +32,14 @@ body{
 .rules__list li {
 	margin-bottom: 20px;
 }
-.rules__btn{
+.btn{
 	padding: 7px;
 	border-radius: 5px;
 	background: #2B2065;
 	color: #8F95C7;
 	border: none;
 	cursor: pointer;
+	
 }
 .game{
 	color: #fff;
@@ -86,6 +87,8 @@ body{
 	right: 100px;
 	background: rgba(0,0,0,0.7);
 	padding: 10px 10px;
+	animation-name: fade-out;
+	animation-duration: .4s;
 }
 .characters__desc ul {
 	margin:0;
@@ -113,19 +116,55 @@ body{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	justify-items: center;
 	align-items: center;
+	left: 50%;
+	top: 100px;
+	transform: translate(-50%);
+
+	animation-name: fade;
+	animation-duration: 1s;
+	
 }
 
 .ch-wrapper {
-	background-color: rgba(0, 0, 0, .8);
-	margin-top: 250px;
-	margin-bottom: 100px;
+	/* background-color: rgba(0, 0, 0, .8); */
+
 	padding: 30px 190px;
 	border-radius: 5px;
 	color: #ffffff;
 	font-weight: bold;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
-.ch-wrapper .ch-item {
+ .ch-header {
 	margin: 20px 0;
+}
+
+ .ch-item {
+	margin:10px auto;
+	width: 120px;
+	
+}
+.ch-btn{
+	margin-top: 30px;
+}
+@keyframes fade {
+	from{
+		opacity: 0;
+	} to{
+		opacity: 1;
+	}
+}
+@keyframes fade-out {
+	from{
+		right: 0px;
+		opacity: 0;
+	}
+	to{
+		right: 100px;
+		opacity: 1;
+	}
 }

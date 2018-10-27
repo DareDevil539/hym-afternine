@@ -9,7 +9,7 @@
 <body>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<div id="container" class="container" v-bind:style="{backgroundImage:'url('+ image +')'}">
-		<div class="rules" v-if="isRules" >
+		<div class="rules animated fadeInUp" v-if="isRules" >
 			<h1 class="rules__tittle">Правила</h1>
 			<ol class="rules__list">
 				<li>loremloremloremloremloremlorem</li>
@@ -18,9 +18,9 @@
 				<li>loremloremloremloremloremlorem</li>
 				<li>loremloremloremloremloremlorem</li>
 			</ol>
-			<button class="rules__btn" v-on:click="changeScene">Продовжити</button>
+			<button class="btn" v-on:click="changeScene">Продовжити</button>
 		</div>
-		<div class="game" v-if="isRules">
+		<div class="game animated fadeInUp" v-if="!isRules && !isChosingCharacter">
 			<div class="game__roomName game-block">Test</div>
 			<div class="game__question game-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -43,11 +43,14 @@
 				<li class="answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </li>
 			</ul>
 		</div>
-		<div class="chosing-character" v-if="!isRules">
+<div class="chosing-character game-block" v-if="!isRules && isChosingCharacter">
 			<div class="ch-wrapper">
-				<div class="ch-item" v-for="(value, key) in persons"><input type="checkbox" :value="key">{{ value }}</div>
+				<div class="ch-header">
+					<h1>Вибір персонажів</h1>
+				</div>
+				<div class="ch-item" v-for="(value, key) in persons"><input type="checkbox" :value="key" v-model="selectedPersons">{{ value }}</div>
+				<button href="#" class="btn ch-btn" @click="selectPersons">{{ selectedPersons.length }}</button>
 			</div>
-			<a href="#" class=""></a>
 		</div>
 	</div>
 	<script type="text/javascript" src="js/script.js"></script>

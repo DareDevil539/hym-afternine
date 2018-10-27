@@ -1,8 +1,8 @@
 new Vue({
 	el: "#container",
 	data:{
-		isRules: false,
-		isChosingCharacter: true,
+		isRules: true,
+		isChosingCharacter: false,
 		image: './img/mainp.jpg',
 		characters: {
 			first: ["test1test1","test1","test1"],
@@ -18,11 +18,13 @@ new Vue({
 			6:"Мажор",
 		},
 		selectedChars:[],
+		selectedPersons:[],
 		isHovered: false,
 	},
 	methods:{
 		changeScene: function(){
 			this.isRules = false;
+			this.isChosingCharacter = true;
 			this.image = './img/cabinet.jpg';
 		},
 		showCharc: function(key){
@@ -33,6 +35,14 @@ new Vue({
 		clearDesc: function(){
 			this.selectedChars = [];
 			this.isHovered = false;
-		}
+		},
+		selectPersons: function() {
+			if (this.selectedPersons.length >= 1 && this.selectedPersons.length <= 3) {
+				this.isRules = false;
+				this.isChosingCharacter = false;
+			} else {
+
+			}
+		},
 	}
 });
