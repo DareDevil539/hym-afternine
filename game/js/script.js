@@ -1,3 +1,5 @@
+Vue.use(VueResource)
+
 new Vue({
 	el: "#container",
 	data:{
@@ -28,6 +30,9 @@ new Vue({
 		isError: false,
 	},
 	methods:{
+		getQuestion: function () {
+			this.$http.post('https://afternine.herokuapp.com/api/question')
+		},
 		changeScene: function(){
 			this.isRules = false;
 			this.isChosingCharacter = true;
