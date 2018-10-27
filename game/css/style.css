@@ -26,7 +26,7 @@ body{
 	color: #fff;
 	background: rgba(0,0,0,0.7);
 	border-radius: 5px;
-	padding: 15px 5px;
+	padding: 15px 20px;
 	animation-name: fade;
 	animation-duration: 1s;
 }
