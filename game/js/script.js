@@ -31,7 +31,7 @@ new Vue({
 		selectedPersons:[],
 		isHovered: false,
 		isError: false,
-		questionID: 4,
+		questionID: 22,
 		nextQuestions: {},
 		checkedID: [],
 	},
@@ -42,13 +42,20 @@ new Vue({
 			}
 			this.$http.get('https://afternine.herokuapp.com/api/question/' + this.questionID + '/').then(function (response) {
 				let tempObj = response.data.data.answers;
+				console.log(response.data);
 				this.questText = response.data.data.question.text;
 				for (const key in tempObj) {
 					let tmpKey = tempObj[key];
-					this.answers[tmpKey.id] = tmpKey.text;
+					console.log(tmpKey.id);
+					console.log(this.checkedID.indexOf("" + tmpKey.id));
+					if (this.checkedID.indexOf("" + tmpKey.id) == -1 && tmpKey.u_id == 0) {
+						this.answers[tmpKey.id] = tmpKey.text;
+					} else if (this.checkedID.indexOf("" + tmpKey.id) == -1 && tmpKey.u_id != 0) {
+						if (this.checkedID.indexOf(tmpKey.u_id) != -1) {
+							this.answers[tmpKey.id] = tmpKey.text;
+						}
+					}
 					this.nextQuestions[tmpKey.id] = tmpKey.next_question_id;
-					console.log(this.nextQuestions);
-					console.log(response.data);
 				}
 			},
 			function (error) {
@@ -83,12 +90,13 @@ new Vue({
 		},
 
 		nextQuest: function (qstId) {
-			if (this.checkedID.indexOf(qstId) == -1) {
+			console.log(qstId);
+			if (this.checkedID.indexOf(qstId) == -1 || qstId == 22) {
+				this.checkedID[qstId] = qstId;
+				console.log(this.checkedID);
 				this.answers = {};
 				qstId = this.nextQuestions[qstId];
 				this.questionID = qstId;
-				this.checkedID[qstId] = qstId;
-				console.log(this.checkedID);
 				this.getQuestion();
 			}
 		}
