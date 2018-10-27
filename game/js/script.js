@@ -1,9 +1,12 @@
+Vue.use(VueResource)
+
 new Vue({
 	el: "#container",
 	data:{
 		isRules: true,
 		isChosingCharacter: false,
-		image: './img/mainp.jpg',
+		image: './img/startimg.jpg',
+		questText: '',
 		characters: {
 			1: ["test1","test1","test1"],
 			2: ["test2","test2","test2"],
@@ -28,10 +31,23 @@ new Vue({
 		isError: false,
 	},
 	methods:{
+		getQuestion: function () {
+			params: {
+
+			}
+			this.$http.get('https://afternine.herokuapp.com/api/question/1/').then(function (response) {
+				let tempObj = response.data.data;
+				console.log(tempObj);
+				this.questText = tempObj.attributes.text;
+			},
+			function (error) {
+				
+			})
+		},
 		changeScene: function(){
 			this.isRules = false;
 			this.isChosingCharacter = true;
-			this.image = './img/cabinet.jpg';
+			// this.image = './img/cabinet.jpg';
 		},
 		showCharc: function(key){
 			let obj = this.characters[key];
@@ -50,5 +66,9 @@ new Vue({
 				this.isError = true;
 			}
 		},
+	},
+	created: function () {
+
+		this.getQuestion();
 	}
 });

@@ -19,7 +19,10 @@ body{
 	width: 50%;	
 	margin: 0 auto;
 	margin-top: 150px;
-	text-align: center;
+	display: flex;
+	flex-direction:column;
+	justify-content: center;
+	align-items:center;
 	color: #fff;
 	background: rgba(0,0,0,0.7);
 	border-radius: 5px;
@@ -31,7 +34,7 @@ body{
 	text-transform: uppercase;
 }
 .rules__list{
-	text-align: left;
+	align-self: flex-start;
 }
 .rules__list li {
 	margin-bottom: 20px;
