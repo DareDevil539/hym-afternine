@@ -8,12 +8,12 @@ new Vue({
 		image: './img/startimg.jpg',
 		questText: '',
 		characters: {
-			1: ["test1","test1","test1"],
-			2: ["test2","test2","test2"],
-			3: ["test3","test3","test3"],
-			4: ["test3","test3","test3"],
-			5: ["test3","test3","test3"],
-			6: ["мажик","test3","test3"],
+			1: ["шарить в аудиторіях","ввічливий","відмінник"],
+			2: ["знає, де 'стрєльнути сіжку'","добре орієнтується в околицях","завжди є на каву"],
+			3: ["завжди хоче домовитися","улюбленець викладачів","спритний"],
+			4: ["легко вибиває двері","витривалий","завжди в 'смєнці'"],
+			5: ["не любить коменда", "охмурить любого", "приваблива зовнішність", "популярна в соц мережах"],
+			6: ["вирішує питання","привабливий","добре ладить з жінками"],
 		},
 		persons: {
 			1:"Ботан",
@@ -32,7 +32,8 @@ new Vue({
 		isHovered: false,
 		isError: false,
 		questionID: 4,
-		nextQuestions: {}
+		nextQuestions: {},
+		checkedID: [],
 	},
 	methods:{
 		getQuestion: function () {
@@ -82,10 +83,14 @@ new Vue({
 		},
 
 		nextQuest: function (qstId) {
-			this.answers = {};
-			qstId = this.nextQuestions[qstId];
-			this.questionID = qstId;
-			this.getQuestion();
+			if (this.checkedID.indexOf(qstId) == -1) {
+				this.answers = {};
+				qstId = this.nextQuestions[qstId];
+				this.questionID = qstId;
+				this.checkedID[qstId] = qstId;
+				console.log(this.checkedID);
+				this.getQuestion();
+			}
 		}
 	},
 	created: function () {
