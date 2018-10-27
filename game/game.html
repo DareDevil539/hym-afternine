@@ -20,7 +20,7 @@
 			</ol>
 			<button class="rules__btn" v-on:click="changeScene">Продовжити</button>
 		</div>
-		<div class="game" v-if="!isRules">
+		<div class="game" v-if="isRules">
 			<div class="game__roomName game-block">Test</div>
 			<div class="game__question game-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -42,6 +42,12 @@
 				<li class="answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </li>
 				<li class="answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </li>
 			</ul>
+		</div>
+		<div class="chosing-character" v-if="!isRules">
+			<div class="ch-wrapper">
+				<div class="ch-item" v-for="(value, key) in persons"><input type="checkbox" :value="key">{{ value }}</div>
+			</div>
+			<a href="#" class=""></a>
 		</div>
 	</div>
 	<script type="text/javascript" src="js/script.js"></script>
