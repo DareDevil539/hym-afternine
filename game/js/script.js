@@ -11,6 +11,9 @@ new Vue({
 			1: ["test1","test1","test1"],
 			2: ["test2","test2","test2"],
 			3: ["test3","test3","test3"],
+			4: ["test3","test3","test3"],
+			5: ["test3","test3","test3"],
+			6: ["мажик","test3","test3"],
 		},
 		persons: {
 			1:"Ботан",
@@ -20,6 +23,7 @@ new Vue({
 			5:"Красуня",
 			6:"Мажор",
 		},
+		curName: '',
 		answers: {
 			
 		},
@@ -27,7 +31,7 @@ new Vue({
 		selectedPersons:[],
 		isHovered: false,
 		isError: false,
-		questionID: 1,
+		questionID: 4,
 		nextQuestions: {}
 	},
 	methods:{
@@ -56,9 +60,12 @@ new Vue({
 			// this.image = './img/cabinet.jpg';
 		},
 		showCharc: function(key){
+			this.curName = '';
+		
 			let obj = this.characters[key];
 			this.selectedChars = this.selectedChars.concat(obj);
 			this.isHovered = true;
+			this.curName = this.persons[key]
 		},
 		clearDesc: function(){
 			this.selectedChars = [];
@@ -68,16 +75,17 @@ new Vue({
 			if (this.selectedPersons.length >= 1 && this.selectedPersons.length <= 3) {
 				this.isRules = false;
 				this.isChosingCharacter = false;
+				
 			} else {
 				this.isError = true;
 			}
 		},
 
 		nextQuest: function (qstId) {
+			this.answers = {};
 			qstId = this.nextQuestions[qstId];
-			alert(qstId);
 			this.questionID = qstId;
-			getQuestion();
+			this.getQuestion();
 		}
 	},
 	created: function () {

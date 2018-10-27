@@ -7,6 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
 	<div id="container" class="container" v-bind:style="{backgroundImage:'url('+ image +')'}">
 		<div class="rules" v-if="isRules" >
 			<h1 class="rules__tittle">Правила</h1>
@@ -29,12 +31,11 @@
 			<div class="game__roomName game-block">Test</div>
 			<div class="game__question game-block">{{questText}}</div>
 			<div class="game__characters game-block">
-				<img :src="'img/avatars/avatar-' + value + '.png'" v-for="(value,key) in selectedPersons" v-on:mouseover="showCharc(key)" v-on:mouseout="clearDesc">
-				<div class="characters__desc" v-if="isHovered"><ul>
+				<img :src="'img/avatars/avatar-' + value + '.png'" v-for="(value,key) in selectedPersons" v-on:mouseover="showCharc(value)" v-on:mouseout="clearDesc">
+				<div class="characters__desc" v-if="isHovered">{{curName}}<ul>
 					<li v-for="item in selectedChars">
-						{{item}}
+						{{item}} 
 					</li>
-					
 				</ul></div>
 			</div>
 			<ul class="game__answers">
@@ -52,8 +53,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+	
 	<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
