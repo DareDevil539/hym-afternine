@@ -45,12 +45,14 @@ new Vue({
 			this.$http.get('http://138.68.89.19:8080/api/question/' + this.questionID + '/').then(function (response) {
 			console.log(response);	
 			let tempObj = response.data.data.answers;
-				this.response = tempObj;
+				this.response = response;
 				console.log(response.body.data.question.background);
-				// this.image = "img/" + response.body.data.question.background;
+				this.image = "img/" + this.response.body.data.question.background;
+				console.log(this.image);
 				this.questText = response.data.data.question.text;
 				for (const key in tempObj) {
 					let tmpKey = tempObj[key];
+					console.log(tmpKey.u_id);
 					if (this.checkedID.indexOf("" + tmpKey.id) == -1 && tmpKey.u_id == 0) {
 						this.answers[tmpKey.id] = tmpKey.text;
 						this.scores += tmpKey.grade;
@@ -95,11 +97,11 @@ new Vue({
 
 		nextQuest: function (qstId) {
 			console.log(qstId);
-			// this.$http.get("https://afternine.herokuapp.com/api/answer/"+ qstId +"/").then(function (response) {
-			// 	console.log(response);
-			// }, function (error) {
+			this.$http.get("http://138.68.89.19:8080/api/answer/" + qstId + "/").then(function (response) {
+				console.log(response);
+			}, function (error) {
 				
-			// })
+			})
 			if (this.checkedID.indexOf(qstId) == -1 || qstId == 22) {
 				this.checkedID[qstId] = qstId;
 				console.log(this.checkedID);
