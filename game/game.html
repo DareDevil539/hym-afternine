@@ -28,8 +28,9 @@
 			<button class="btn" v-on:click="changeScene">Продовжити</button>
 		</div>
 		<div class="game" v-if="!isRules && !isChosingCharacter">
-			<div class="game__roomName game-block">Test</div>
+			<div class="game__roomName game-block">Night in University</div>
 			<div class="game__question game-block">{{questText}}</div>
+			<div class="scores"><h1>{{ scores }}</h1></div>
 			<div class="game__characters game-block">
 				<img :src="'img/avatars/avatar-' + value + '.png'" v-for="(value,key) in selectedPersons" v-on:mouseover="showCharc(value)" v-on:mouseout="clearDesc">
 				<div class="characters__desc" v-if="isHovered">{{curName}}<ul>

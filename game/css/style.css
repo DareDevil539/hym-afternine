@@ -195,3 +195,9 @@ span.error {
 		opacity: 1;
 	}
 }
+
+.scores {
+	position: absolute;
+	right: 40px;
+	top: 30px;
+}
