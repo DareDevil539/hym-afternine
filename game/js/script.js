@@ -21,24 +21,30 @@ new Vue({
 			6:"Мажор",
 		},
 		answers: {
-			1: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do",
-			2: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do",
-			3: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do",
+			
 		},
 		selectedChars:[],
 		selectedPersons:[],
 		isHovered: false,
 		isError: false,
+		questionID: 1,
+		nextQuestions: {}
 	},
 	methods:{
 		getQuestion: function () {
 			params: {
 
 			}
-			this.$http.get('https://afternine.herokuapp.com/api/question/1/').then(function (response) {
-				let tempObj = response.data.data;
-				console.log(tempObj);
-				this.questText = tempObj.attributes.text;
+			this.$http.get('https://afternine.herokuapp.com/api/question/' + this.questionID + '/').then(function (response) {
+				let tempObj = response.data.data.answers;
+				this.questText = response.data.data.question.text;
+				for (const key in tempObj) {
+					let tmpKey = tempObj[key];
+					this.answers[tmpKey.id] = tmpKey.text;
+					this.nextQuestions[tmpKey.id] = tmpKey.next_question_id;
+					console.log(this.nextQuestions);
+					console.log(response.data);
+				}
 			},
 			function (error) {
 				
@@ -66,6 +72,13 @@ new Vue({
 				this.isError = true;
 			}
 		},
+
+		nextQuest: function (qstId) {
+			qstId = this.nextQuestions[qstId];
+			alert(qstId);
+			this.questionID = qstId;
+			getQuestion();
+		}
 	},
 	created: function () {
 
