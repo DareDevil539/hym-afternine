@@ -1,4 +1,7 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import serializers
+from rest_framework.response import Response
+
 from game.models import *
 
 
@@ -10,6 +13,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 
 
 class AnswerSerializer(serializers.ModelSerializer):
+
 
     class Meta:
         model = Answer
