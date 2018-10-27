@@ -8,7 +8,7 @@ class Answer(models.Model):
     text = models.TextField()
     u_id = models.IntegerField(default=0, null=True)
     #character = models.OneToOneField('Character', default='0000000', on_delete=models.CASCADE, null=True)
-
+    grade = models.IntegerField(default=0)
     next_question = models.ForeignKey('Question',
                                       on_delete=models.CASCADE,
                                       related_name='question_in_a',
