@@ -108,3 +108,24 @@ body{
 .answer:hover{
 	background: rgba(0,0,0,1);
 }
+
+.chosing-character {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.ch-wrapper {
+	background-color: rgba(0, 0, 0, .8);
+	margin-top: 250px;
+	margin-bottom: 100px;
+	padding: 30px 190px;
+	border-radius: 5px;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+.ch-wrapper .ch-item {
+	margin: 20px 0;
+}
