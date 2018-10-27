@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fa09993-679a-441e-aecb-b2d2d3f21c17" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/api/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game/api/viewsets.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/api/viewsets.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quest/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/quest/router.py" afterDir="false" />
