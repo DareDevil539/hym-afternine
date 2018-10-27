@@ -5,9 +5,9 @@ new Vue({
 		isChosingCharacter: false,
 		image: './img/mainp.jpg',
 		characters: {
-			first: ["test1test1","test1","test1"],
-			second: ["test2","test2","test2"],
-			third: ["test3","test3","test3"],
+			1: ["test1","test1","test1"],
+			2: ["test2","test2","test2"],
+			3: ["test3","test3","test3"],
 		},
 		persons: {
 			1:"Ботан",
@@ -17,9 +17,15 @@ new Vue({
 			5:"Красуня",
 			6:"Мажор",
 		},
+		answers: {
+			1: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do",
+			2: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do",
+			3: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do",
+		},
 		selectedChars:[],
 		selectedPersons:[],
 		isHovered: false,
+		isError: false,
 	},
 	methods:{
 		changeScene: function(){
@@ -41,7 +47,7 @@ new Vue({
 				this.isRules = false;
 				this.isChosingCharacter = false;
 			} else {
-
+				this.isError = true;
 			}
 		},
 	}

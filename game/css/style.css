@@ -12,6 +12,8 @@ body{
 
 	-webkit-background-size: cover;
 	background-size: cover;
+	animation-name: fade;
+	animation-duration: 1.5s
 }
 .rules{
 	width: 50%;	
@@ -22,6 +24,8 @@ body{
 	background: rgba(0,0,0,0.7);
 	border-radius: 5px;
 	padding: 15px 5px;
+	animation-name: fade;
+	animation-duration: 1s;
 }
 .rules__tittle{
 	text-transform: uppercase;
@@ -62,11 +66,12 @@ body{
 	transform: translate(-50%);
 }
 .game__question{
-
 	width: 70%;
 	top:100px;
 	left: 15px;
 	padding: 10px 10px;
+	animation-name: fade-in-left;
+	animation-duration: 1s;
 }
 .game__characters{
 	right: 0;
@@ -98,6 +103,8 @@ body{
 	border-radius: 5px;
 	bottom:20px;
 	width: 50%;
+	animation-name: fade-in-left;
+	animation-duration: 2s;
 }
 .game__answers li {
 	margin-bottom: 10px;
@@ -129,7 +136,7 @@ body{
 
 .ch-wrapper {
 	/* background-color: rgba(0, 0, 0, .8); */
-
+	width: 100%;
 	padding: 30px 190px;
 	border-radius: 5px;
 	color: #ffffff;
@@ -137,6 +144,7 @@ body{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 }
 
  .ch-header {
@@ -151,6 +159,12 @@ body{
 .ch-btn{
 	margin-top: 30px;
 }
+
+span.error {
+	color: #ff0000;
+	margin-bottom: 20px;
+}
+
 @keyframes fade {
 	from{
 		opacity: 0;
@@ -165,6 +179,16 @@ body{
 	}
 	to{
 		right: 100px;
+		opacity: 1;
+	}
+}
+
+@keyframes fade-in-left {
+	from {
+		left: -100%;
+		opacity: 0;
+	} to {
+		left: 15px;
 		opacity: 1;
 	}
 }
